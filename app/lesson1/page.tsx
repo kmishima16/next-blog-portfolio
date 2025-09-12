@@ -71,7 +71,7 @@ const Lesson1Page = () => {
 					</svg>
 				</div>
 				<h3>React.js</h3>
-				<p>これは最初のReactJSのレッスンです</p>
+				<p>これは最初のReactJSのレッスン</p>
 
 				<div className={styles.toggleButtons}>
 					{difficulties.map((level) => (

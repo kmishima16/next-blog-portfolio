@@ -20,7 +20,7 @@
 
 .svgContainer {
 	width: 100%;
-	height: 40%;
+	height: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -41,8 +41,7 @@
 .toggleButtons {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
-	margin-bottom: 20px;
+	gap: 5px;
 	width: 100%;
 }
 
@@ -72,5 +71,5 @@
 	font-size: 16px;
 	font-weight: bold;
 	cursor: pointer;
-	margin-top: auto;
+	margin-top: 16px;
 }
