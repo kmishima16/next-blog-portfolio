@@ -7,14 +7,14 @@
 
 .card {
 	width: 300px;
-	height: 450px;
+	height: 400px;
 	background-color: #fff;
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
+	padding: 0px 20px;
 	box-sizing: border-box;
 }
 
@@ -28,29 +28,40 @@
 
 .card h3 {
 	margin-top: 0;
-	margin-bottom: 10px;
+	margin-bottom: 16px;
+	font-size: 24px;
+	font-weight: bold;
+	width: 100%;
+	text-align: left;
+	align-self: flex-start;
 }
 
 .card p {
 	margin-top: 0;
 	margin-bottom: 20px;
-	text-align: center;
+	text-align: left;
+	font-size: 14px;
 	color: #666;
+	width: 100%;
+	align-self: flex-start;
 }
 
 .toggleButtons {
 	display: flex;
 	justify-content: center;
-	gap: 5px;
+	gap: 1px;
 	width: 100%;
 }
 
 .toggleButton {
-	padding: 8px 12px;
+	padding: 4px 16px;
+	font-size: 12px;
+	font-weight: bold;
 	border: 1px solid #ccc;
 	background-color: #f0f0f0;
 	color: #333;
 	border-radius: 20px;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
@@ -62,14 +73,13 @@
 }
 
 .startButton {
-	width: 100%;
-	padding: 12px;
-	background-color: #007bff;
+	width: 90%;
+	padding: 8px 8px;
+	background-color: #5479e6;
 	color: white;
 	border: none;
-	border-radius: 8px;
-	font-size: 16px;
-	font-weight: bold;
+	border-radius: 20px;
+	font-size: 14px;
 	cursor: pointer;
-	margin-top: 16px;
+	margin: auto 0;
 }
