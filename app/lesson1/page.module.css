@@ -16,6 +16,8 @@
 	align-items: center;
 	padding: 0px 20px;
 	box-sizing: border-box;
+	transition: transform 0.1s ease;
+	transform-style: preserve-3d;
 }
 
 .svgContainer {
@@ -24,6 +26,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transform: translateZ(40px);
 }
 
 .card h3 {
@@ -34,6 +37,7 @@
 	width: 100%;
 	text-align: left;
 	align-self: flex-start;
+	transform: translateZ(30px);
 }
 
 .card p {
@@ -44,6 +48,7 @@
 	color: #666;
 	width: 100%;
 	align-self: flex-start;
+	transform: translateZ(20px);
 }
 
 .toggleButtons {
@@ -51,6 +56,7 @@
 	justify-content: center;
 	gap: 1px;
 	width: 100%;
+	transform: translateZ(20px);
 }
 
 .toggleButton {
@@ -82,4 +88,5 @@
 	font-size: 14px;
 	cursor: pointer;
 	margin: auto 0;
+	transform: translateZ(10px);
 }

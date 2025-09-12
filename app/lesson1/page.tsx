@@ -1,5 +1,8 @@
+// biome-ignore-all lint/a11y/useSemanticElements: form要素ではないから
+
 "use client";
 import { useId, useState } from "react";
+import type { MouseEvent } from "react";
 import styles from "./page.module.css";
 
 const Lesson1Page = () => {
@@ -8,10 +11,35 @@ const Lesson1Page = () => {
 		"Easy",
 	);
 	const difficulties = ["Easy", "Advanced", "Hard", "PRO"];
+	const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+	const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+		const card = e.currentTarget;
+		const { width, height, left, top } = card.getBoundingClientRect();
+		const x = e.clientX - left;
+		const y = e.clientY - top;
+
+		const rotateX = -((y - height / 2) / (height / 2)) * 10;
+		const rotateY = ((x - width / 2) / (width / 2)) * 10;
+
+		setRotate({ x: rotateX, y: rotateY });
+	};
+
+	const handleMouseLeave = () => {
+		setRotate({ x: 0, y: 0 });
+	};
 
 	return (
 		<main className={styles.main}>
-			<div className={styles.card}>
+			<div
+				className={styles.card}
+				onMouseMove={handleMouseMove}
+				onMouseLeave={handleMouseLeave}
+				style={{
+					transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+				}}
+				role="group"
+			>
 				<div className={styles.svgContainer}>
 					<svg
 						width="100"
@@ -81,14 +109,16 @@ const Lesson1Page = () => {
 								activeDifficulty === level ? styles.active : ""
 							}`}
 							onClick={() => setActiveDifficulty(level)}
-							type = "button"
+							type="button"
 						>
 							{level}
 						</button>
 					))}
 				</div>
 
-				<button className={styles.startButton} type="button">Start</button>
+				<button className={styles.startButton} type="button">
+					Start
+				</button>
 			</div>
 		</main>
 	);
