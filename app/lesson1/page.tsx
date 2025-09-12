@@ -63,7 +63,8 @@ const Lesson1Page = () => {
 						REACT
 					</text>
 				</svg>
-				<h3>Card Title</h3>
+				<h3>React.js</h3>
+				<p>これは最初のReactJSのレッスンです</p>
 			</div>
 		</main>
 	);
