@@ -5,65 +5,59 @@ import Article from "./article";
 import articles from "./data";
 import styles from "./page.module.css";
 
-// Theme variables
-const themeVariables = {
+type Theme = "light-theme" | "dark-theme";
+
+const themeVariables: Record<Theme, React.CSSProperties> = {
 	"light-theme": {
-		"--primary-color": "#212529" /* ダークグレー */,
-		"--secondary-color": "#6c757d" /* グレー */,
-		"--background-color": "#ffffff" /* 白 */,
-		"--surface-color": "#f8f9fa" /* 薄いグレー */,
-		"--border-color": "#dee2e6" /* ボーダー色 */,
+		"--primary-color": "#212529",
+		"--secondary-color": "#6c757d",
+		"--background-color": "#ffffff",
+		"--surface-color": "#f8f9fa",
+		"--border-color": "#dee2e6",
 		"--shadow-color": "rgba(0, 0, 0, 0.1)",
 		"--shadow-hover": "rgba(0, 0, 0, 0.15)",
 	} as React.CSSProperties,
 	"dark-theme": {
-		"--primary-color": "#e9ecef" /* ライトグレー */,
-		"--secondary-color": "#ced4da" /* 非常に明るいグレー */,
-		"--background-color": "#212529" /* ダークグレー */,
-		"--surface-color": "#121212" /* ほぼ黒 */,
-		"--border-color": "#495057" /* ダークボーダー色 */,
+		"--primary-color": "#e9ecef",
+		"--secondary-color": "#ced4da",
+		"--background-color": "#212529",
+		"--surface-color": "#121212",
+		"--border-color": "#495057",
 		"--shadow-color": "rgba(0, 0, 0, 0.3)",
 		"--shadow-hover": "rgba(0, 0, 0, 0.5)",
 	} as React.CSSProperties,
 };
 
-// localStorage handling function
-function getStorageTheme(): string {
+function getStorageTheme(): Theme {
 	if (typeof window !== "undefined") {
-		const savedTheme = localStorage.getItem("theme");
+		const savedTheme: Theme = localStorage.getItem("theme") as Theme;
 		return savedTheme || "light-theme";
 	}
 	return "light-theme";
 }
 
 export default function SnippetsPage() {
-	const [theme, setTheme] = useState<string>("light-theme");
+	const [theme, setTheme] = useState<Theme>("light-theme");
 
-	// Initialize theme from localStorage
 	useEffect(() => {
 		const savedTheme = getStorageTheme();
 		setTheme(savedTheme);
 	}, []);
 
-	// Update localStorage when theme changes
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			localStorage.setItem("theme", theme);
 		}
 	}, [theme]);
 
-	// Toggle theme function
 	const toggleTheme = () => {
 		setTheme((prevTheme) =>
 			prevTheme === "light-theme" ? "dark-theme" : "light-theme",
 		);
 	};
 
-	// Get current theme variables
-	const currentThemeVars = themeVariables[theme as keyof typeof themeVariables];
-
 	return (
-		<div className={styles.fullScreenWrapper} style={currentThemeVars}>
+		<div className={styles.fullScreenWrapper} style={themeVariables[theme]}>
 			<div className={styles.container}>
 				<nav className={styles.navigation}>
 					<h1 className={styles.title}>OverReacting</h1>
