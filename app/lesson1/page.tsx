@@ -36,7 +36,7 @@ const Lesson1Page = () => {
 				onMouseMove={handleMouseMove}
 				onMouseLeave={handleMouseLeave}
 				style={{
-					transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+					transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
 				}}
 				role="group"
 			>

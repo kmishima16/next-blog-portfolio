@@ -14,10 +14,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0px 20px;
+	padding: 0px 24px;
 	box-sizing: border-box;
-	transition: transform 0.1s ease;
+	transition: transform 0.3s ease-out;
 	transform-style: preserve-3d;
+	perspective: 1000px;
+	--depth-large: 40px;
+	--depth-medium: 30px;
+	--depth-small: 20px;
+	--depth-tiny: 10px;
 }
 
 .svgContainer {
@@ -26,7 +31,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transform: translateZ(40px);
+	transform: translateZ(var(--depth-large));
 }
 
 .card h3 {
@@ -37,7 +42,7 @@
 	width: 100%;
 	text-align: left;
 	align-self: flex-start;
-	transform: translateZ(30px);
+	transform: translateZ(var(--depth-medium));
 }
 
 .card p {
@@ -48,7 +53,7 @@
 	color: #666;
 	width: 100%;
 	align-self: flex-start;
-	transform: translateZ(20px);
+	transform: translateZ(var(--depth-small));
 }
 
 .toggleButtons {
@@ -56,11 +61,11 @@
 	justify-content: center;
 	gap: 1px;
 	width: 100%;
-	transform: translateZ(20px);
+	transform: translateZ(var(--depth-small));
 }
 
 .toggleButton {
-	padding: 4px 16px;
+	padding: 4px 14px;
 	font-size: 12px;
 	font-weight: bold;
 	border: 1px solid #ccc;
@@ -88,5 +93,5 @@
 	font-size: 14px;
 	cursor: pointer;
 	margin: auto 0;
-	transform: translateZ(10px);
+	transform: translateZ(var(--depth-tiny));
 }
