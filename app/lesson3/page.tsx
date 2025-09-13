@@ -63,32 +63,34 @@ export default function SnippetsPage() {
 	const currentThemeVars = themeVariables[theme as keyof typeof themeVariables];
 
 	return (
-		<div className={styles.container} style={currentThemeVars}>
-			<nav className={styles.navigation}>
-				<h1 className={styles.title}>OverReacting</h1>
-				<div className={styles.themeToggleContainer}>
-					<span className={styles.lightIcon}>light</span>
-					<button
-						type="button"
-						className={`${styles.themeToggle} ${theme === "dark-theme" ? styles.themeToggleDark : ""}`}
-						onClick={toggleTheme}
-						aria-label={`Switch to ${theme === "light-theme" ? "dark" : "light"} theme`}
-					>
-						<span className={styles.toggleSlider}></span>
-					</button>
-					<span className={styles.darkIcon}>dark</span>
-				</div>
-			</nav>
+		<div className={styles.fullScreenWrapper} style={currentThemeVars}>
+			<div className={styles.container}>
+				<nav className={styles.navigation}>
+					<h1 className={styles.title}>OverReacting</h1>
+					<div className={styles.themeToggleContainer}>
+						<span className={styles.lightIcon}>light</span>
+						<button
+							type="button"
+							className={`${styles.themeToggle} ${theme === "dark-theme" ? styles.themeToggleDark : ""}`}
+							onClick={toggleTheme}
+							aria-label={`Switch to ${theme === "light-theme" ? "dark" : "light"} theme`}
+						>
+							<span className={styles.toggleSlider}></span>
+						</button>
+						<span className={styles.darkIcon}>dark</span>
+					</div>
+				</nav>
 
-			<main className={styles.main}>
-				<div className={styles.articlesGrid}>
-					{articles.map((article) => (
-						<div key={article.id} className={styles.articleWrapper}>
-							<Article {...article} />
-						</div>
-					))}
-				</div>
-			</main>
+				<main className={styles.main}>
+					<div className={styles.articlesGrid}>
+						{articles.map((article) => (
+							<div key={article.id} className={styles.articleWrapper}>
+								<Article {...article} />
+							</div>
+						))}
+					</div>
+				</main>
+			</div>
 		</div>
 	);
 }
