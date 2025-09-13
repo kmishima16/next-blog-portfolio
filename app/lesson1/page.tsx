@@ -12,6 +12,7 @@ const Lesson1Page = () => {
 	);
 	const difficulties = ["Easy", "Advanced", "Hard", "PRO"];
 	const [rotate, setRotate] = useState({ x: 0, y: 0 });
+	const [isButtonPressed, setIsButtonPressed] = useState(false);
 
 	const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
 		const card = e.currentTarget;
@@ -116,7 +117,15 @@ const Lesson1Page = () => {
 					))}
 				</div>
 
-				<button className={styles.startButton} type="button">
+				<button
+					className={`${styles.startButton} ${
+						isButtonPressed ? styles.active : ""
+					}`}
+					type="button"
+					onMouseDown={() => setIsButtonPressed(true)}
+					onMouseUp={() => setIsButtonPressed(false)}
+					onMouseLeave={() => setIsButtonPressed(false)} // カーソルがボタンから離れた場合も考慮
+				>
 					Start
 				</button>
 			</div>

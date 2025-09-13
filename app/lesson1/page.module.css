@@ -94,4 +94,9 @@
 	cursor: pointer;
 	margin: auto 0;
 	transform: translateZ(var(--depth-tiny));
+	transition: background-color 0.2s ease-in-out;
+}
+
+.startButton:active {
+	background-color: #4362b8;
 }
