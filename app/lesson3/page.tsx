@@ -8,28 +8,22 @@ import styles from './page.module.css';
 // Theme variables
 const themeVariables = {
 	'light-theme': {
-		'--primary-color': '#85dce7',
-		'--secondary-color': '#bd8ce9',
-		'--text-color': '#333',
-		'--bg-color': '#fff',
-		'--card-bg': 'rgba(255, 255, 255, 0.9)',
-		'--nav-bg': 'rgba(255, 255, 255, 0.95)',
+		'--primary-color': '#212529', /* ダークグレー */
+		'--secondary-color': '#6c757d', /* グレー */
+		'--background-color': '#ffffff', /* 白 */
+		'--surface-color': '#f8f9fa', /* 薄いグレー */
+		'--border-color': '#dee2e6', /* ボーダー色 */
 		'--shadow-color': 'rgba(0, 0, 0, 0.1)',
-		'--shadow-hover': 'rgba(0, 0, 0, 0.2)',
-		'--meta-color': '#666',
-		'--border-color': 'rgba(0, 0, 0, 0.1)',
+		'--shadow-hover': 'rgba(0, 0, 0, 0.15)',
 	} as React.CSSProperties,
 	'dark-theme': {
-		'--primary-color': '#4fd1c7',
-		'--secondary-color': '#9f7aea',
-		'--text-color': '#e2e8f0',
-		'--bg-color': '#1a202c',
-		'--card-bg': 'rgba(45, 55, 72, 0.9)',
-		'--nav-bg': 'rgba(26, 32, 44, 0.95)',
+		'--primary-color': '#e9ecef', /* ライトグレー */
+		'--secondary-color': '#ced4da', /* 非常に明るいグレー */
+		'--background-color': '#212529', /* ダークグレー */
+		'--surface-color': '#121212', /* ほぼ黒 */
+		'--border-color': '#495057', /* ダークボーダー色 */
 		'--shadow-color': 'rgba(0, 0, 0, 0.3)',
 		'--shadow-hover': 'rgba(0, 0, 0, 0.5)',
-		'--meta-color': '#a0aec0',
-		'--border-color': 'rgba(255, 255, 255, 0.1)',
 	} as React.CSSProperties,
 };
 
