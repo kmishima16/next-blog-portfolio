@@ -8,18 +8,20 @@ export default function HomePage() {
 				<div className={styles.logo}>ポートフォリオ</div>
 			</nav>
 
-			<header className={styles.header}>
-				<h1>React</h1>
-			</header>
-
-			<section className={styles.lessonGrid}>
+			<section className={styles.blogList}>
 				{lessonCards.map((card) => (
-					<article key={card.id} className={styles.lessonCard}>
-						<div className={styles.cardImage}>
-							{/* 画像はCSSのbackground-imageで表示することを想定 */}
+					<article key={card.id} className={styles.blogItem}>
+						<h2 className={styles.blogTitle}>{card.title}</h2>
+						<div className={styles.blogContent}>
+							<p className={styles.blogText}>{card.content}</p>
+							<div className={styles.blogTags}>
+								{card.tags.map((tag) => (
+									<span key={tag} className={styles.tag}>
+										{tag}
+									</span>
+								))}
+							</div>
 						</div>
-						<h3>{card.title}</h3>
-						<p>{card.content}</p>
 					</article>
 				))}
 			</section>
