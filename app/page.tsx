@@ -5,29 +5,7 @@ export default function HomePage() {
 	return (
 		<main className={styles.main}>
 			<nav className={styles.nav}>
-				<div className={styles.logo}>PROJECTSCHOOL</div>
-				<ul>
-					<li>
-						<p>Practice</p>
-					</li>
-					<li>
-						<p>Pricing</p>
-					</li>
-					<li>
-						<p>Articles</p>
-					</li>
-					<li>
-						<p>FAQ</p>
-					</li>
-				</ul>
-				<div className={styles.authButtons}>
-					<button className={styles.loginButton} type="button">
-						Login
-					</button>
-					<button className={styles.signupButton} type="button">
-						Sign Up
-					</button>
-				</div>
+				<div className={styles.logo}>ポートフォリオ</div>
 			</nav>
 
 			<header className={styles.header}>
