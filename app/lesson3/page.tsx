@@ -1,9 +1,8 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { cookies } from "next/headers";
 import Article from "./article";
 import articles from "./data";
 import styles from "./page.module.css";
+import ThemeToggle from "./ThemeToggle"; // 作成したクライアントコンポーネントをインポート
 
 type Theme = "light-theme" | "dark-theme";
 
@@ -28,51 +27,20 @@ const themeVariables: Record<Theme, React.CSSProperties> = {
 	} as React.CSSProperties,
 };
 
-function getStorageTheme(): Theme {
-	if (typeof window !== "undefined") {
-		const savedTheme: Theme = localStorage.getItem("theme") as Theme;
-		return savedTheme || "light-theme";
-	}
-	return "light-theme";
-}
-
-export default function SnippetsPage() {
-	const [theme, setTheme] = useState<Theme>("light-theme");
-
-	useEffect(() => {
-		const savedTheme = getStorageTheme();
-		setTheme(savedTheme);
-	}, []);
-
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			localStorage.setItem("theme", theme);
-		}
-	}, [theme]);
-
-	const toggleTheme = () => {
-		setTheme((prevTheme) =>
-			prevTheme === "light-theme" ? "dark-theme" : "light-theme",
-		);
-	};
+export default async function SnippetsPage() {
+	// サーバーサイドでCookieを読み取る
+	const cookieStore = await cookies();
+	const themeCookie = cookieStore.get("theme");
+	const theme: Theme =
+		themeCookie?.value === "dark-theme" ? "dark-theme" : "light-theme";
 
 	return (
 		<div className={styles.fullScreenWrapper} style={themeVariables[theme]}>
 			<div className={styles.container}>
 				<nav className={styles.navigation}>
 					<h1 className={styles.title}>OverReacting</h1>
-					<div className={styles.themeToggleContainer}>
-						<span className={styles.lightIcon}>light</span>
-						<button
-							type="button"
-							className={`${styles.themeToggle} ${theme === "dark-theme" ? styles.themeToggleDark : ""}`}
-							onClick={toggleTheme}
-							aria-label={`Switch to ${theme === "light-theme" ? "dark" : "light"} theme`}
-						>
-							<span className={styles.toggleSlider}></span>
-						</button>
-						<span className={styles.darkIcon}>dark</span>
-					</div>
+					{/* クライアントコンポーネントに現在のテーマを渡す */}
+					<ThemeToggle currentTheme={theme} />
 				</nav>
 
 				<main className={styles.main}>
