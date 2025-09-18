@@ -99,6 +99,33 @@
 	font-weight: 500;
 }
 
+.blogTitleLink {
+	color: #0969da;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	border-radius: 4px;
+	padding: 2px 4px;
+	margin: -2px -4px;
+	display: inline-block;
+}
+
+.blogTitleLink:hover {
+	color: #0550ae;
+	text-decoration: underline;
+}
+
+.blogTitleLink:focus {
+	outline: none;
+	color: #24292f;
+	font-weight: 600;
+}
+
+.blogTitleLink:focus-visible {
+	outline: none;
+	color: #24292f;
+	font-weight: 600;
+}
+
 .blogContent {
 	color: #656d76;
 	line-height: 1.6;

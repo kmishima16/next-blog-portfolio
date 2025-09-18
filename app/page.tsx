@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import lessonCards from "./data";
+import Link from "next/link";
 
 export default function HomePage() {
 	return (
@@ -11,7 +12,11 @@ export default function HomePage() {
 			<section className={styles.blogList}>
 				{lessonCards.map((card) => (
 					<article key={card.id} className={styles.blogItem}>
-						<h2 className={styles.blogTitle}>{card.title}</h2>
+						<h2 className={styles.blogTitle}>
+							<Link href={card.url} className={styles.blogTitleLink}>
+								{card.title}
+							</Link>
+						</h2>
 						<div className={styles.blogContent}>
 							<p className={styles.blogText}>{card.content}</p>
 							<div className={styles.blogTags}>
