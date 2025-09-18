@@ -2,7 +2,7 @@ const lessonCards = [
 	{
 		id: 1,
 		title: "React 3D Interactive Card",
-		content: "マウス移動, enter, leaveのイベントリスナーによる3D視覚効果の付与",
+		content: "onMouseEnter, onMouseLeaveと連動してtranslateZを変える",
 		tags: ["React"],
 		url: "/lesson1",
 	},
@@ -16,7 +16,7 @@ const lessonCards = [
 	{
 		id: 3,
 		title: "Dark-Light Mode Toggle",
-		content: "トグル可能なライトとダークテーマ",
+		content: "トグル可能なライトとダークテーマ(あえてcookieで状態を管理してみた)",
 		tags: ["React"],
 		url: "/lesson3",
 	},

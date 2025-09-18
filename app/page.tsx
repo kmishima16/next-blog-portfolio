@@ -9,6 +9,11 @@ export default function HomePage() {
 				<div className={styles.logo}>ポートフォリオ</div>
 			</nav>
 
+			<div className={styles.header}>
+				<h1 className={styles.mainTitle}>Reactコンポーネント</h1>
+				<p className={styles.description}>React基礎の素振りのために、よくあるデザインをCSS Modulesで実装してみたものです。</p>
+			</div>
+
 			<section className={styles.blogList}>
 				{lessonCards.map((card) => (
 					<article key={card.id} className={styles.blogItem}>
