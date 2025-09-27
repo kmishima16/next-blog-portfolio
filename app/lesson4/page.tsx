@@ -1,14 +1,21 @@
 import data from "./data";
+import styles from "./page.module.css";
 
 const SortableTablePage = () => {
 	return (
-		<div>
-			<h1>Sortify</h1>
-			<div>
-				<input type="text" placeholder="Search contracts" />
+		<div className={styles.container}>
+			<h1 className={styles.title}>Sortify</h1>
+			<div className={styles.searchContainer}>
+				<input 
+					type="text" 
+					placeholder="Search contracts" 
+					className={styles.searchInput}
+				/>
 			</div>
-			<button type="button">Sort by First Name</button>
-			<table>
+			<button type="button" className={styles.sortButton}>
+				Sort by First Name
+			</button>
+			<table className={styles.table}>
 				<thead>
 					<tr>
 						<th>First Name</th>
