@@ -2,46 +2,65 @@
 import { useState, useId } from "react";
 import styles from "./page.module.css";
 
+const BMI_THRESHOLDS = {
+	UNDERWEIGHT: 18.5,
+	NORMAL: 25,
+};
+
+const calculateBmiValue = (weight: number, height: number): number => {
+	if (weight <= 0 || height <= 0) return 0;
+	const heightInMeters = height / 100;
+	const bmi = weight / (heightInMeters * heightInMeters);
+	return Math.round(bmi * 10) / 10;
+};
+
+const getBmiMessage = (bmi: number): string => {
+	if (bmi === 0) return "";
+	if (bmi < BMI_THRESHOLDS.UNDERWEIGHT) return "低すぎです！";
+	if (bmi < BMI_THRESHOLDS.NORMAL) return "適正です";
+	return "高すぎです！";
+};
+
+type BmiResult = {
+	value: number;
+	message: string;
+};
+
+const createBmiResult = (weight: string, height: string): BmiResult | null => {
+	const weightNum = parseFloat(weight);
+	const heightNum = parseFloat(height);
+
+	if (
+		Number.isNaN(weightNum) ||
+		Number.isNaN(heightNum) ||
+		weightNum <= 0 ||
+		heightNum <= 0
+	) {
+		return null;
+	}
+
+	const bmiValue = calculateBmiValue(weightNum, heightNum);
+	const bmiMessage = getBmiMessage(bmiValue);
+	return { value: bmiValue, message: bmiMessage };
+};
+
 const Lesson2Page = () => {
 	const weightId = useId();
 	const heightId = useId();
-	const [weight, setWeight] = useState<string>("");
-	const [height, setHeight] = useState<string>("");
-	const [bmi, setBmi] = useState<number | null>(null);
-	const [message, setMessage] = useState<string>("");
-
-	const calculateBMI = () => {
-		const weightNum = parseFloat(weight);
-		const heightNum = parseFloat(height);
-
-		if (weightNum > 0 && heightNum > 0) {
-			// 身長をcmからmに変換
-			const heightInMeters = heightNum / 100;
-			const bmiValue = weightNum / (heightInMeters * heightInMeters);
-
-			setBmi(Math.round(bmiValue * 10) / 10); // 小数点第1位まで
-
-			// BMI分類メッセージ
-			if (bmiValue < 18.5) {
-				setMessage("低すぎです！");
-			} else if (bmiValue >= 18.5 && bmiValue < 25) {
-				setMessage("適正です");
-			} else {
-				setMessage("高すぎです！");
-			}
-		}
-	};
+	const [weight, setWeight] = useState("");
+	const [height, setHeight] = useState("");
+	const [result, setResult] = useState<BmiResult | null>(null);
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		calculateBMI();
+		const bmiResult = createBmiResult(weight, height);
+		setResult(bmiResult);
 	};
 
 	const handleReload = () => {
 		setWeight("");
 		setHeight("");
-		setBmi(null);
-		setMessage("");
+		setResult(null);
 	};
 
 	return (
@@ -51,35 +70,32 @@ const Lesson2Page = () => {
 
 				<form onSubmit={handleSubmit} className={styles.form}>
 					<div className={styles.inputGroup}>
-						<div className={styles.inputGroup}>
-							<label htmlFor={heightId} className={styles.label}>
-								Height (cm)
-							</label>
-							<input
-								id={heightId}
-								type="number"
-								value={height}
-								onChange={(e) => setHeight(e.target.value)}
-								className={styles.input}
-								placeholder="0"
-								min="0"
-								step="0.1"
-							/>
-
-							<label htmlFor={weightId} className={styles.label}>
-								Weight (kg)
-							</label>
-							<input
-								id={weightId}
-								type="number"
-								value={weight}
-								onChange={(e) => setWeight(e.target.value)}
-								className={styles.input}
-								placeholder="0"
-								min="0"
-								step="0.1"
-							/>
-						</div>
+						<label htmlFor={heightId} className={styles.label}>
+							Height (cm)
+						</label>
+						<input
+							id={heightId}
+							type="number"
+							value={height}
+							onChange={(e) => setHeight(e.target.value)}
+							className={styles.input}
+							placeholder="0"
+							min="0"
+							step="0.1"
+						/>
+						<label htmlFor={weightId} className={styles.label}>
+							Weight (kg)
+						</label>
+						<input
+							id={weightId}
+							type="number"
+							value={weight}
+							onChange={(e) => setWeight(e.target.value)}
+							className={styles.input}
+							placeholder="0"
+							min="0"
+							step="0.1"
+						/>
 					</div>
 					<button
 						type="submit"
@@ -98,15 +114,15 @@ const Lesson2Page = () => {
 					Reload
 				</button>
 
-				<div className={styles.result}>
-					<p className={styles.resultText}>Your BMI is:</p>
-					{bmi !== null && (
+				{result && (
+					<div className={styles.result}>
+						<p className={styles.resultText}>Your BMI is:</p>
 						<div className={styles.bmiDisplay}>
-							<p className={styles.bmiValue}>{bmi}</p>
-							<p className={styles.bmiMessage}>{message}</p>
+							<p className={styles.bmiValue}>{result.value}</p>
+							<p className={styles.bmiMessage}>{result.message}</p>
 						</div>
-					)}
-				</div>
+					</div>
+				)}
 			</div>
 		</main>
 	);
