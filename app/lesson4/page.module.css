@@ -43,7 +43,7 @@
 .searchInput:focus {
 	outline: none;
 	border-color: #3b82f6;
-	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+	box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.1);
 }
 
 .searchInput::placeholder {
@@ -70,7 +70,7 @@
 
 .sortButton:focus {
 	outline: none;
-	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+	box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3);
 }
 
 /* Table styling */
@@ -145,6 +145,14 @@
 .table td:nth-child(4) {
 	font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
 	font-size: 0.9rem;
+}
+
+/* Sort status text styling */
+.sortStatus {
+	margin-left: 0.75rem;
+	font-size: 0.875rem;
+	color: #6b7280;
+	font-weight: 500;
 }
 
 /* Responsive design */

@@ -1,18 +1,27 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import data from "./data";
 import styles from "./page.module.css";
 
 const SortableTablePage = () => {
 	const [searchTerm, setSearchTerm] = useState("");
+	const [sortOrder, setSortOrder] = useState<"none" | "asc">("none");
 
 	const filteredData = useMemo(() => {
 		const lowerSearchTerm = searchTerm.toLowerCase();
-		return data.filter((item) =>
+		let filtered = data.filter((item) =>
 			item.first_name.toLowerCase().includes(lowerSearchTerm),
 		);
-	}, [searchTerm]);
+
+		if (sortOrder === "asc") {
+			filtered = filtered.sort((a, b) =>
+				a.first_name.localeCompare(b.first_name),
+			);
+		}
+
+		return filtered;
+	}, [searchTerm, sortOrder]);
 
 	return (
 		<div className={styles.container}>
@@ -26,9 +35,23 @@ const SortableTablePage = () => {
 					onChange={(e) => setSearchTerm(e.target.value)}
 				/>
 			</div>
-			<button type="button" className={styles.sortButton}>
+			<button
+				type="button"
+				className={styles.sortButton}
+				aria-label={
+					sortOrder === "asc"
+						? "Sort by first name, currently ascending. Click to remove sorting."
+						: "Sort by first name, currently not sorted. Click to sort ascending."
+				}
+				onClick={() => {
+					setSortOrder((prev) => (prev === "none" ? "asc" : "none"));
+				}}
+			>
 				Sort by First Name
 			</button>
+			<span className={styles.sortStatus}>
+				{sortOrder === "asc" ? <span>昇順</span> : <span>無し</span>}
+			</span>
 			<table className={styles.table}>
 				<thead>
 					<tr>
