@@ -24,10 +24,16 @@ const lessonCards = [
 	{
 		id: 4,
 		title: "Sortify Table",
-		content:
-			"inputのonChangeとbuttonのonClickでテーブルの内容を変える",
+		content: "inputのonChangeとbuttonのonClickでテーブルの内容を変える",
 		tags: ["React"],
 		url: "/lesson4",
+	},
+	{
+		id: 5,
+		title: "Quiz App",
+		content: "4択クイズを行い、結果を表示するアプリ",
+		tags: ["React"],
+		url: "/lesson5",
 	},
 ];
 
