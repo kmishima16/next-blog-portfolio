@@ -16,9 +16,18 @@ const lessonCards = [
 	{
 		id: 3,
 		title: "Dark-Light Mode Toggle",
-		content: "トグル可能なライトとダークテーマ(あえてcookieで状態を管理してみた)",
+		content:
+			"トグル可能なライトとダークテーマ(あえてcookieで状態を管理してみた)",
 		tags: ["React"],
 		url: "/lesson3",
+	},
+	{
+		id: 4,
+		title: "Sortify Table",
+		content:
+			"inputのonChangeとbuttonのonClickでテーブルの内容を変える",
+		tags: ["React"],
+		url: "/lesson4",
 	},
 ];
 
