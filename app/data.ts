@@ -49,6 +49,13 @@ const lessonCards = [
 		tags: ["React"],
 		url: "/lesson7",
 	},
+	{
+		id: 8,
+		title: "Box Shadow Generator",
+		content: "box-shadowのプロパティをレイヤー別に調整できるアプリ",
+		tags: ["React"],
+		url: "/lesson8",
+	},
 ];
 
 export default lessonCards;
