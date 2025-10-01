@@ -42,6 +42,13 @@ const lessonCards = [
 		tags: ["React"],
 		url: "/lesson6",
 	},
+	{
+		id: 7,
+		title: "Birthday Reminder",
+		content: "誕生日が近い順に並べて表示するアプリ",
+		tags: ["React"],
+		url: "/lesson7",
+	},
 ];
 
 export default lessonCards;
