@@ -1,0 +1,59 @@
+/* CSS変数をローカルスコープに定義 */
+.main {
+	--primary-color: #ff6b6b;
+	--secondary-color: #48dbfb;
+	--text-color: #2c3a47;
+	--bg-color: #f8f9fa;
+	--accent-color: #1dd1a1;
+	--shadow-color: rgba(0, 0, 0, 0.2);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: "Poppins", sans-serif;
+	background: var(--bg-color);
+	color: var(--text-color);
+	line-height: 1.6;
+	padding: 2rem;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: #fff;
+	border-radius: 1.5rem;
+	box-shadow: 0 10px 20px var(--shadow-color);
+	padding: 2.5rem;
+	margin-top: 40px;
+	transition: all 0.3s ease;
+	max-width: 500px;
+	width: 100%;
+}
+
+.container h2 {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	margin-bottom: 1.5rem;
+	color: var(--text-color);
+}
+
+.container button {
+	background: var(--accent-color);
+	color: #fff;
+	border: none;
+	border-radius: 30px;
+	padding: 0.8rem 1.5rem;
+	font-size: 1.1rem;
+	cursor: pointer;
+	outline: none;
+	transition: background 0.3s ease;
+	margin-top: 1rem;
+}
+
+.container button:hover {
+	background: #16a085;
+}

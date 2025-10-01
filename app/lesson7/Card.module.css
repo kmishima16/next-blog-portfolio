@@ -1,0 +1,48 @@
+.person {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	transition: background 0.3s ease;
+}
+
+.person:hover {
+	background: var(--bg-color);
+}
+
+.image {
+	border-radius: 50%;
+	box-shadow: 0 5px 15px var(--shadow-color);
+	transition: all 0.3s ease;
+	object-fit: cover;
+}
+
+.image:hover {
+	transform: scale(1.1);
+}
+
+.info {
+	flex: 1;
+}
+
+.info h4 {
+	margin: 0;
+	font-size: 1.2rem;
+	color: var(--text-color);
+}
+
+.info p {
+	margin: 0.25rem 0;
+	color: #666;
+}
+
+.today {
+	color: var(--primary-color);
+	font-weight: 600;
+}
+
+.upcoming {
+	color: var(--secondary-color);
+	font-weight: 500;
+}
