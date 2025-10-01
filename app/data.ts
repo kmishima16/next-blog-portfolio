@@ -35,6 +35,13 @@ const lessonCards = [
 		tags: ["React"],
 		url: "/lesson5",
 	},
+	{
+		id: 6,
+		title: "FAQ Accordion",
+		content: "アコーディオン形式でFAQを表示する",
+		tags: ["React"],
+		url: "/lesson6",
+	},
 ];
 
 export default lessonCards;
